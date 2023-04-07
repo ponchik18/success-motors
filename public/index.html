@@ -14,6 +14,14 @@
             color: #212529;
             background-color: #fff;
         }
+        .error{
+            
+            display: block;
+            padding: 15px 10px 15px 50px;
+            color: #fa4251;
+        
+            max-width: 200px;
+        }
         
         .container-contact100 {
             width: 100%;
@@ -161,6 +169,10 @@
         .contact100-form-btn i {
             transition: all .4s
         }
+        .mistake::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: red;
+            opacity: 1; /* Firefox */
+        }
         
         .contact100-form-btn:hover {
             background-color: #00ad5f
@@ -178,10 +190,10 @@
         .validate-input {
             position: relative
         }
-        .select100 {
+        select {
 
             display: block;
-            width: 100% !important;
+            width: 90% !important;
             height: 40px !important;
             background: 0 0;
             font-family: Montserrat-SemiBold;
@@ -190,20 +202,19 @@
             line-height: 1.2;
             padding-right: 15px;
             background-color: #f7f7f7;
-            /* border-color: #f7f7f7 ; */
             border: none;
             outline: none;
             font: inherit;
             margin: 0;      
             box-sizing: border-box;
         }
-        .select100:focus{
+        select:focus{
             outline: none;
             background-color: #f7f7f7;
             border-color: #f7f7f7 ;
         }
         .wrap-select{
-            background: #fff;
+            background: #f7f7f7;
            display: block;
            width: 100%; 
         }
@@ -221,37 +232,12 @@
             top: 35px;
             right: 12px
         }
-        .alert-validate::before {
-            content: attr(data-validate);
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: flex;
-            align-items: center;
-            position: absolute;
-            width: 100%;
-            min-height: 40px;
-            background-color: #f7f7f7;
-            top: 35px;
-            left: 0;
-            padding: 0 45px 0 22px;
-            pointer-events: none;
-            font-family: Montserrat-SemiBold;
-            font-size: 18px;
-            color: #fa4251;
-            line-height: 1.2
-        }
 
         .btn-hide-validate {
             font-family: Material-Design-Iconic-Font;
             font-size: 18px;
             color: #fa4251;
             cursor: pointer;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -moz-box;
-            display: -ms-flexbox;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -267,7 +253,7 @@
         }
 
         .true-validate::after {
-            content: "\f26b";
+            content: "\2714";
             font-family: Material-Design-Iconic-Font;
             font-size: 18px;
             color: #00ad5f;
@@ -276,8 +262,8 @@
             position: absolute;
             width: 40px;
             height: 40px;
-            top: 35px;
-            right: 10px
+            top: 45px;
+            right: 0px
         }
 
     </style>
@@ -287,9 +273,10 @@
     <script>
     function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
     </script>
+    
     <section class ="container-contact100">
         <div class="wrap-contact100">
-            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="contact100-form  validate-input">
+            <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" class="contact100-form  validate-form">
                 <span class="contact100-form-title">Leave your preferred product</span>
                 <input type=hidden name='captcha_settings' value='{"keyname":"SuccessMotorsAPI2","fallback":"true","orgId":"00D2w00000Rs9bp","ts":""}'>
                 <input type=hidden name="oid" value="00D2w00000Rs9bp">
@@ -311,14 +298,14 @@
                     <input  id="email" maxlength="80" name="email" size="20" type="text" class="input100" placeholder="Enter your email"/>
                 </div>
                 <div class="wrap-input100 validate-input bg1">
-                    <label for="phone" class="label-input100">Phone *</label>
-                    <input  id="phone" maxlength="40" name="phone" size="20" type="text" class="input100" placeholder="Enter your phone"/>
+                    <label for="phone" class="label-input100 ">Phone *</label>
+                    <input  id="phone" maxlength="40" name="phone" size="20" type="tel" class="input100 art-stranger" placeholder="(999) 999-9999"/>
                 </div>
                 <div class="wrap-input100 input-100-select bg1">
                     <label for="00N2w00000ZGDk3" class="label-input100">Product:</label>
                     <div class="wrap-select">
-                        <select class="select100" id="00N2w00000ZGQXz" style="width: 200px;" name="00N2w00000ZGQXz"  >
-                            <option value="none">--None--</option>
+                        <select class="input100" id="00N2w00000ZGQXz" style="width: 200px;" name="00N2w00000ZGQXz"  >
+                            <option value="none" selected>--None--</option>
                             <option value = "R001C1">Renault Logan</option> 
                             <option value = "R002C2">Renault Logan Stepway</option> 
                             <option value = "R003C3">Renault Sandero</option> 
@@ -353,7 +340,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="g-recaptcha" data-sitekey="6LergWYlAAAAAPEGfoUExjD5ZT9sRc8ZrxoHux9A"></div>
+                <div class="g-recaptcha" style="display: block; " data-sitekey="6LergWYlAAAAAPEGfoUExjD5ZT9sRc8ZrxoHux9A"></div>
                 <div class = "container-contact100-form-btn">
                     <button type="submit" name="submit" class = "contact100-form-btn">
                     <span>
@@ -365,79 +352,114 @@
         </div>
     </section> 
     <script>
-        function validate(input){
-            console.log(input);
-            console.log(input.getAttribute("name")=='email');
-            console.log(input.value.trim()=='')
-            if(input.getAttribute("name")=='email' || input.getAttribute("type")=='email'){
-                if(input.value.trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/)==null){
-                    console.log("Email is empty!");
-                    return false;
+        document.addEventListener('DOMContentLoaded', function() {
+            // "use strict";
+            const capture = document.querySelector('.g-recaptcha');
+            capture.addEventListener('blur', ()=>{
+                if(grecaptcha.getResponse()==0){
+                    capture.insertAdjacentHTML('afterend', '<div class="error">Error message</div>');
                 }
-                //add phone validation
+                else {
+                    const errorCapture = document.querySelector('.error');
+                    errorCapture.remove();
+                }
+            });
+            var inputs = document.querySelectorAll('.input100');
+
+            function onBlurInput(event) {
+                if (!validate(event.target)) {
+                    event.target.parentElement.classList.remove('true-validate');
+                    showValidate(event.target);
+                } else {
+                event.target.parentElement.classList.add('true-validate');
+                }
             }
-            else{
-                    console.log("dsd '"+input.value.trim()+"'");
-                    if(input.value.trim()==''){
-                        console.log("Field is empty!");
-                        return false
+            
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('blur', onBlurInput);
+            }
+            var form = document.querySelector('.validate-form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                var isValid = true;
+                for (var i = 0; i < inputs.length; i++) {
+                    if (!validate(inputs[i])) {
+                        showValidate(inputs[i]);
+                        isValid = false;
                     }
                 }
-            return true;
-        }
-        function hideValidation(input){
-            const parentInput = input.parentNode;
-            parentInput.classList.remove('alert-validate');
-            if(parentInput.querySelector('.btn-hide-validate') != null){
-                parentInput.querySelector('.btn-hide-validate').remove();
+                if(grecaptcha.getResponse()==0){
+                    capture.insertAdjacentHTML('afterend', '<div class="error">Verify the reCapture!</div>');
+                    isValid = false;
+                    
+                }
+                if (isValid) {
+                form.submit();
+                }
+            });
+
+            function onFocusInput(event) {
+                hideValidate(event.target);
+                event.target.parentElement.classList.remove('true-validate');
             }
-        }
-        function showValidate(input){
-            const parentInput = input.parentNode;
-            parentInput.classList.add('alert-validate');
-            parentInput.innerHTML+='<span class="btn-hide-validate">&#10006;</span>';
-            console.log(parentInput);
-            const btnVal = document.getElementsByClassName('btn-hide-validate');
-            btnVal.forEach(element => {
-                element.addEventListener('click', ()=>{
-                    hideValidation(element);
-                });
-            });
-        }
-        function useStrict(){
-            const inputElements = document.querySelectorAll('.validate-input .input100');
-            inputElements.forEach(element =>{
-                element.addEventListener('blur', ()=>{
-                    if(validate(element) == false){
-                        showValidate(element);
+
+            var inputElements = document.querySelectorAll('.input100');
+            for (var i = 0; i < inputElements.length; i++) {
+                inputElements[i].addEventListener('focus', onFocusInput);
+            }
+
+            function validate(input) {
+                if(input.tagName =='SELECT'){
+
+                    if(input.value=='none' || input.value==''){
+                        
+                        return false;
                     }
-                    else{
-                        element.parentNode.classList.add('true-validate');
+                }
+                else if (input.getAttribute('type') === 'email' || input.getAttribute('name') === 'email') {
+                    if (!/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/.test(input.value.trim())) {
+                        return false;
                     }
+                }
+                else if(input.getAttribute('type') === 'phone' || input.getAttribute('name') === 'phone'){
+                    if (!/^\(\d{3}\) \d{3}-\d{4}$/.test(input.value.trim())) {
+                        return false;
+                    }
+                }
+                
+                else {
+                    if (input.value.trim() === '') {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            function showValidate(input) {
+                var parentElement = input.parentElement;
+                input.style.color='red';
+                input.classList.add('mistake');
+
+                var btnHideValidate = document.createElement('span');
+                btnHideValidate.classList.add('btn-hide-validate');
+                btnHideValidate.innerHTML = '&#10006;';
+                btnHideValidate.addEventListener('click', function() {
+                    hideValidate(btnHideValidate);
                 });
+                parentElement.appendChild(btnHideValidate);
+            }
+
+            function hideValidate(input) {
+                input.classList.remove('mistake');
+                var parentElement = input.parentElement;
+                input.parentNode.querySelector('.input100').style.color='#555';
+                input.parentNode.querySelector('.input100').value='';
+                var btnHideValidate = parentElement.querySelector('.btn-hide-validate');
+                if(btnHideValidate!=null)
+                    btnHideValidate.remove();
+            }
             });
-        }
-        function hideAllValidation(){
-            const inputElements = document.querySelectorAll('.validate-input .input100');
-            inputElements.forEach(element => {
-                element.addEventListener('focus', ()=>{
-                    hideValidation(element);
-                    element.parentNode.classList.remove('true-validate');
-                });
-            });
-        }
-        function addTrueValidate(){
-            const inputs = document.querySelector('.validate-form .input100');
-            inputs.forEach(element=>{
-                element.addEventListener('focus', ()=>{
-                    hideValidation(element);
-                    element.parentNode.classList.remove('true-validate');
-                });
-            });
-        }
-        useStrict();
-        addTrueValidate();
-        hideAllValidation();
 
     </script> 
 </body>
