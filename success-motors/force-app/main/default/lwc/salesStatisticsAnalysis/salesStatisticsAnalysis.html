@@ -1,0 +1,33 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template lwc:if={isAccountDetailPage}>
+            <lightning-card class = "light" title="Account Info">
+                <lightning-accordion>
+                    <c-account-line record-id={recordId} account = {account}></c-account-line>
+                </lightning-accordion>
+            </lightning-card>
+         
+    </template>
+    <template lwc:else>
+        
+
+            <template lwc:if ={allAccount}>
+                <lightning-card class = "light" title="Account Info">
+                    <div class="slds-m-around_medium">
+                            <lightning-input style="height: 40px;" type = "search" class ="searchbar" label="Search by Account Name an Sum" onchange={handleKeyWordChange}></lightning-input>
+                    </div>
+                        <lightning-accordion lwc:if = {displayedData}>
+                            <template for:each={displayedData} for:item="acc">
+                                <c-account-line key={acc.Id} record-id = {acc.Id} account = {acc}></c-account-line>
+                            </template>
+                        </lightning-accordion>
+                        <div>
+                            <lightning-button class="slds-m-left_medium" variant="neutral" label="Previous" onclick={previousPage} disabled = {isFirstPage}></lightning-button>
+                            <lightning-button class="slds-m-left_medium" variant="neutral" label="Next" onclick={nextPage} disabled = {isLastPage}></lightning-button>
+                        </div>
+
+                </lightning-card>
+            </template>
+        
+    </template> 
+</template>

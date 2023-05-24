@@ -1,0 +1,18 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template lwc:if={isDataPass}>
+    <lightning-accordion-section name = {recordid} label={accountLabel}>
+        <lightning-datatable
+                        key-field="Id"
+                        data={oppData}
+                        columns={oppColumns}
+                        onrowaction={handleRowActions}
+                        hide-checkbox-column
+                        >     
+        </lightning-datatable>
+    </lightning-accordion-section>
+    </template>
+    <template lwc:else>
+        Loading...<br>
+    </template>
+</template>

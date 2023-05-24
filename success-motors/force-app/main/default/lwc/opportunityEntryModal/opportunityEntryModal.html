@@ -1,0 +1,15 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-modal-header label = {oppName}></lightning-modal-header>
+    <lightning-modal-body>
+        <lightning-datatable
+                        key-field="Id"
+                        data={products}
+                        columns={prodColumns}
+                        hide-checkbox-column>  
+        </lightning-datatable>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button label="OK" onclick={handleOkay}></lightning-button>
+    </lightning-modal-footer>
+</template>
